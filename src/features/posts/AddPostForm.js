@@ -23,7 +23,7 @@ export const AddPostForm = () => {
           content
         })
       )
-      setTitle('')
+      setTitle('')            //SAVE后清空
       setContent('')
     }
   }
