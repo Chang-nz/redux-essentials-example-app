@@ -5,6 +5,7 @@ const initialState = [
   { id: '2', title: 'Second Post', content: 'More text' }
 ]
 
+//createSlice function to make a reducer function
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
