@@ -18,12 +18,13 @@ const postsSlice = createSlice({
       //the "prepare callback" function can take multiple arguments, 
       //generate random values like unique IDs, 
       //and run to decide what values go into the action object. 
-      prepare(title, content) {
+      prepare(title, content,userId) {
         return {
           payload: {
             id: nanoid(),
             title,
-            content
+            content,
+            userId,
           }
         }
       }
