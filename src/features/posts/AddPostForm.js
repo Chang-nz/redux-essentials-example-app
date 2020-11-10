@@ -9,7 +9,7 @@ export const AddPostForm = () => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [userId, setUserId] = useState('')
-  //const [date,setDate] =useState(new Date() )
+  const [date,setDate] =useState(new Date() )    //现在不能工作，不知道为什么？
 
   const dispatch = useDispatch()
 
@@ -21,7 +21,7 @@ export const AddPostForm = () => {
 
   const onSavePostClicked = () => {
     if (title && content) {
-      dispatch(postAdded( title, content,userId,date))      //提供 dispatch(action) 方法更新 state
+      dispatch(postAdded( title, content,userId,date))      //date现在不能工作，不知道为什么？
             
       setTitle('')            //SAVE后清空
       setContent('')
