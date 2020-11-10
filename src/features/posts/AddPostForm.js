@@ -9,6 +9,7 @@ export const AddPostForm = () => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [userId, setUserId] = useState('')
+  //const [date,setDate] =useState(new Date() )
 
   const dispatch = useDispatch()
 
@@ -20,7 +21,7 @@ export const AddPostForm = () => {
 
   const onSavePostClicked = () => {
     if (title && content) {
-      dispatch(postAdded( title, content,userId))      //提供 dispatch(action) 方法更新 state
+      dispatch(postAdded( title, content,userId,date))      //提供 dispatch(action) 方法更新 state
             
       setTitle('')            //SAVE后清空
       setContent('')
@@ -38,6 +39,7 @@ export const AddPostForm = () => {
   return (
     <section>
       <h2>Add a New Post</h2>
+      <div className="row">
       <form>
         <label htmlFor="postTitle">Post Title:</label>
         <input
@@ -62,6 +64,7 @@ export const AddPostForm = () => {
         />
         <button type="button" onClick={onSavePostClicked} disabled={!canSave}>Save Post</button>
       </form>
+      </div>
     </section>
   )
 }
