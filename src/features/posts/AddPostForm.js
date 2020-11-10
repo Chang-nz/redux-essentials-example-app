@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
 import { postAdded } from './postsSlice'
-import {nanoid} from '@reduxjs/toolkit'
+
 import {useDispatch} from 'react-redux'
 
 
@@ -16,13 +16,8 @@ export const AddPostForm = () => {
 
   const onSavePostClicked = () => {
     if (title && content) {
-      dispatch(
-        postAdded({
-          id: nanoid(),         //nanoid() function generated a random unique ID
-          title,
-          content
-        })
-      )
+      dispatch(postAdded( title, content))      
+            
       setTitle('')            //SAVE后清空
       setContent('')
     }
