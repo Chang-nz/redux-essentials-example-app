@@ -16,7 +16,7 @@ export const AddPostForm = () => {
 
   const onSavePostClicked = () => {
     if (title && content) {
-      dispatch(postAdded( title, content))      
+      dispatch(postAdded( title, content))      //提供 dispatch(action) 方法更新 state
             
       setTitle('')            //SAVE后清空
       setContent('')
