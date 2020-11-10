@@ -24,7 +24,7 @@ const postsSlice = createSlice({
             id: nanoid(),
             title,
             content,
-            user:userId,      //很重要
+            user:userId,      //很重要 PostAuthor的参数是userId
           }
         }
       }
