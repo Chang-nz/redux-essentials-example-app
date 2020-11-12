@@ -48,13 +48,20 @@ const postsSlice = createSlice({
         return {
           payload: {
             id: nanoid(),
-            date: new Date().toISOString,   //post.date value as a timestamp string
+            date: new Date().toISOString(),   //post.date value as a timestamp string
             title,
             content,
             user:userId,      //很重要 PostAuthor的参数是userId
-          }
+            reactions: {
+              thumbsUp: 0,
+              hooray: 0,
+              heart: 0,
+              rocket: 0,
+              eyes: 0,
+            },
+          },
         }
-      }
+      },
     },
    
     
