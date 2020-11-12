@@ -9,10 +9,9 @@ export const AddPostForm = () => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [userId, setUserId] = useState('')
-  const [date,setDate] =useState(new Date() )    //现在不能工作，不知道为什么？
+  
 
   const dispatch = useDispatch()
-
   const users = useSelector(state => state.users)
 
   const onTitleChanged = e => setTitle(e.target.value)
@@ -21,8 +20,7 @@ export const AddPostForm = () => {
 
   const onSavePostClicked = () => {
     if (title && content) {
-      dispatch(postAdded( title, content,userId,date))      //date现在不能工作，不知道为什么？
-            
+      dispatch(postAdded( title, content,userId))      
       setTitle('')            //SAVE后清空
       setContent('')
     }
@@ -50,11 +48,13 @@ export const AddPostForm = () => {
           value={title}
           onChange={onTitleChanged}
         />
+        
         <label htmlFor="postAuthor" >Author:</label>
         <select id="postAuthor" value={userId} onChange={onAuthorChaned}>
           <option value=""></option>
           {usersOptions}
         </select>
+
         <label htmlFor="postContent">Content:</label>
         <textarea
           id="postContent"
