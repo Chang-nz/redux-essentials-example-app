@@ -48,7 +48,7 @@ const postsSlice = createSlice({
         return {
           payload: {
             id: nanoid(),
-            date: new Date().toISOString(),   //post.date value as a timestamp string
+            date: new Date().toISOString(),   //前面忘了在toISOString写()，所以date不工作。
             title,
             content,
             user:userId,      //很重要 PostAuthor的参数是userId
