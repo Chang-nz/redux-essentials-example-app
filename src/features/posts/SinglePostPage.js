@@ -6,13 +6,14 @@ import { PostAuthor } from './PostAuthor'
 import { ReactionButtons } from './ReactionButtons'
 import { TimeAgo } from './TimeAgo'
 
+import {selectPostById} from './postsSlice'
+
 
 export const SinglePostPage = ({ match }) => {
   const { postId } = match.params       //match object as a prop that contains the URL information
 
-  const post = useSelector(state =>
-    state.posts.find(post => post.id === postId)
-  )     //Array.find() function to loop through the array
+  //const post = useSelector(state => state.posts.find(post => post.id === postId) )  
+  const post = useSelector(state => selectPostById(state, postId))  
 
   if (!post) {
     return (

@@ -41,14 +41,12 @@ const postsSlice = createSlice({
       reducer(state, action) {
         state.push(action.payload)
       },
-      //the "prepare callback" function can take multiple arguments, 
-      //generate random values like unique IDs, 
-      //and run to decide what values go into the action object. 
+     
       prepare(title, content,userId) {
         return {
           payload: {
             id: nanoid(),
-            date: new Date().toISOString(),   //前面忘了在toISOString写()，所以date不工作。
+            date: new Date().toISOString(),   
             title,
             content,
             user:userId,      //很重要 PostAuthor的参数是userId
@@ -80,3 +78,8 @@ const postsSlice = createSlice({
 export const {postAdded,postUpdated,reactionAdded} = postsSlice.actions
 
 export default postsSlice.reducer
+
+export const selectAllPosts = state => state.posts
+
+export const selectPostById = (state, postId) =>
+  state.posts.find(post => post.id === postId)
