@@ -157,7 +157,7 @@ new Server({
       username() {
         return faker.internet.userName(this.firstName, this.lastName)
       },
-
+      //  Create 3 user ganeric post
       afterCreate(user, server) {
         server.createList('post', 3, { user })
       },
