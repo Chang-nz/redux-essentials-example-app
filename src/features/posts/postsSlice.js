@@ -100,7 +100,7 @@ export const {postAdded,postUpdated,reactionAdded} = postsSlice.actions
 
 export default postsSlice.reducer
 
-export const selectAllPosts = state => state.posts
+export const selectAllPosts = state => state.posts.posts  //少写了一个posts,所以不显示
 
 export const selectPostById = (state, postId) =>
   state.posts.find(post => post.id === postId)
