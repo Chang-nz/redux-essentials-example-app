@@ -1,4 +1,4 @@
-import { createSlice, nanoid, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import {client} from '../../api/client'       //? ../../
 
 const initialState = {
@@ -13,6 +13,17 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
   return response.posts
 })
 
+export const addNewPost = createAsyncThunk(
+  'posts/addNewPost',
+  // The payload creator receives the partial `{title, content, user}` object
+  async (initialPost) => {
+    // We send the initial data to the fake API server
+    const response = await client.post('/fakeApi/posts', { post: initialPost })
+    // The response includes the complete post object, including unique ID
+    return response.post
+  }
+)
+
 //createSlice function to make a reducer function
 const postsSlice = createSlice({
   name: 'posts',
@@ -25,7 +36,7 @@ const postsSlice = createSlice({
         existingPost.reactions[reaction]++
       }
     },
-
+    /*
     postAdded: {
       reducer(state, action) {
         state.posts.push(action.payload)
@@ -49,9 +60,10 @@ const postsSlice = createSlice({
           },
         }
       },
+      
     },
    
-    
+    */
 
     postUpdated(state, action) {
       const {id,title, content} = action.payload
@@ -75,7 +87,11 @@ const postsSlice = createSlice({
     [fetchPosts.rejected]: (state, action) => {
       state.status = 'failed'
       state.error = action.error.message
-    }
+    },
+    [addNewPost.fulfilled]: (state, action) => {
+      // We can directly add the new post object to our posts array
+      state.posts.push(action.payload)
+    },
   }
 
 })
