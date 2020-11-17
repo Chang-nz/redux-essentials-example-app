@@ -21,6 +21,10 @@ const usersSlice = createSlice({
 
 export default usersSlice.reducer
 
+export const selectAllUsers = state => state.users
+export const selectUserById = (state,userId) => 
+  state.users.find(user => user.id === userId)
+  
 
 /*
 import { createSlice } from '@reduxjs/toolkit'
