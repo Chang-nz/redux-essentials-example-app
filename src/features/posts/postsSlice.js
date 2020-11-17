@@ -36,34 +36,7 @@ const postsSlice = createSlice({
         existingPost.reactions[reaction]++
       }
     },
-    /*
-    postAdded: {
-      reducer(state, action) {
-        state.posts.push(action.payload)
-      },
-     
-      prepare(title, content,userId) {
-        return {
-          payload: {
-            id: nanoid(),
-            date: new Date().toISOString(),   
-            title,
-            content,
-            user:userId,      //很重要 PostAuthor的参数是userId
-            reactions: {
-              thumbsUp: 0,
-              hooray: 0,
-              heart: 0,
-              rocket: 0,
-              eyes: 0,
-            },
-          },
-        }
-      },
-      
-    },
-   
-    */
+    
 
     postUpdated(state, action) {
       const {id,title, content} = action.payload
@@ -100,6 +73,7 @@ export const {postAdded,postUpdated,reactionAdded} = postsSlice.actions
 
 export default postsSlice.reducer
 
+//change any uses of state as an array to be state.posts instead,
 export const selectAllPosts = state => state.posts.posts  //少写了一个posts,所以不显示
 
 export const selectPostById = (state, postId) =>
