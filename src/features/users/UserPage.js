@@ -10,10 +10,7 @@ export const UserPage = ({match}) => {
 
     const user = useSelector(state =>selectUserById(state,userId))  //之前userId写错了
 
-    const postsForUser = useSelector(state =>{
-        const allPosts = selectAllPosts(state)
-        return allPosts.filter(post =>post.user ===userId)
-    })
+    const postsForUser = useSelector(state =>selectAllPosts(state,userId))
     //Link to SinglePostPage
     const postTitles =postsForUser.map(post =>(
         <li key={post.id}>
