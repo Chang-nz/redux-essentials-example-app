@@ -11,7 +11,7 @@ export const Navbar = () => {
   const numUnreadNotifications = notifications.filter(n => !n.read).length
 
   const fetchNewNotifications = () => {
-    dispatch(fetchNotifications)
+    dispatch(fetchNotifications())      //忘写（）了，所以Notifications没有内容
   }
 
   let unreadNotificationsBadge    //show us the count of "Unread" notifications
