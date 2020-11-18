@@ -12,7 +12,7 @@ export const NotificationsList = () => {
   const users = useSelector(selectAllUsers)
 
   useEffect(()=> {
-      dispatch(allNotificationsRead)
+      dispatch(allNotificationsRead())    //又忘写()了。所以不标记读过的信息
   } )
 
   const renderedNotifications = notifications.map(notification => {
