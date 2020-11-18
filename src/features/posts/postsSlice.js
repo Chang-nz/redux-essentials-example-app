@@ -1,5 +1,5 @@
 //The standard async middleware is called redux-thunk, which is included in Redux Toolkit
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'  
+import { createSlice, createAsyncThunk,createSelector } from '@reduxjs/toolkit'  
 import {client} from '../../api/client'       //? ../../
 
 const initialState = {
@@ -79,3 +79,8 @@ export const selectAllPosts = state => state.posts.posts  //少写了一个posts
 
 export const selectPostById = (state, postId) =>
   state.posts.posts.find(post => post.id === postId)    ////少写了一个posts,所以不显示SinglePostPage
+
+  export const selectPostsByUser = createSelector(
+    [selectAllPosts, (state, userId) => userId],
+    (posts, userId) => posts.filter(post => post.user === userId)
+  )  
