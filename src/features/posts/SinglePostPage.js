@@ -22,7 +22,7 @@ export const SinglePostPage = ({ match }) => {
       </section>
     )
   }
-
+  //link to EditPostForm
   return (
     <section>
       <article className="post">

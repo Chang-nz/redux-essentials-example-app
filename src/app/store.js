@@ -10,15 +10,7 @@ export default configureStore({
   reducer: {
     posts: postsReducer,         //state连到 postsReducer 再连 postsSlice
     users: usersReducer,
-    notifications: notificationsReducer
+    notifications: notificationsReducer,
   }
 })
 
-
-
-
-/*
-export default configureStore({
-  reducer: () => ({}),
-})
-*/
