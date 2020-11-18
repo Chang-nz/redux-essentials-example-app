@@ -72,11 +72,12 @@ const postsSlice = createSlice({
       
       postsAdapter.upsertMany(state, action.payload)  // Use the `upsertMany` reducer as a mutating update utility
     },
+    /*
     [fetchPosts.rejected]: (state, action) => {
       state.status = 'failed'
       state.error = action.error.message
     },
-    /*
+    
     [addNewPost.fulfilled]: (state, action) => {
       // We can directly add the new post object to our posts array
       state.posts.push(action.payload)
@@ -98,7 +99,7 @@ export const {
   selectById: selectPostById,
   selectIds: selectPostIds
   // Pass in a selector that returns the posts slice of state
-} = postsAdapter.getSelectors(state => state.posts)
+} = postsAdapter.getSelectors(state => state.posts)   //返回一个空的规范化状态对象
 /*
 //change any uses of state as an array to be state.posts instead,
 export const selectAllPosts = state => state.posts.posts  //少写了一个posts,所以不显示

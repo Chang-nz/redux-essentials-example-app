@@ -6,9 +6,17 @@ import { PostAuthor } from './PostAuthor'
 import { ReactionButtons } from './ReactionButtons'
 import { TimeAgo } from './TimeAgo'
 
-import { selectAllPosts, fetchPosts} from './postsSlice'
+//import { selectAllPosts, fetchPosts} from './postsSlice'
 
-let PostExcerpt = ({ post }) => {
+import {
+  
+  fetchPosts,
+  selectPostIds,
+  selectPostById
+} from './postsSlice'
+
+let PostExcerpt = ({ postId }) => {
+  const post = useSelector(state => selectPostById(state, postId))
   return (
     <article className="post-excerpt" key={post.id}>
       <h3>{post.title}</h3>
@@ -29,8 +37,9 @@ PostExcerpt = React.memo(PostExcerpt)
 
 export const PostsList = () => {
   const dispatch = useDispatch()
-  const posts = useSelector(selectAllPosts)
-  //const posts = useSelector(state => state.posts)   //---useSelector() 从redux的store对象中提取数据(state)。
+  const orderedPostIds = useSelector(selectPostIds)
+  //2//const posts = useSelector(selectAllPosts)
+  //1//const posts = useSelector(state => state.posts)   
    
   const postStatus = useSelector(state => state.posts.status)
   const error = useSelector(state => state.posts.error)
@@ -46,13 +55,8 @@ export const PostsList = () => {
   if (postStatus === 'loading') {
     content = <div className="loader">Loading...</div>
   } else if (postStatus === 'succeeded') {
-    // Sort posts in reverse chronological order by datetime string
-    const orderedPosts = posts
-      .slice()
-      .sort((a, b) => b.date.localeCompare(a.date))
-
-    content = orderedPosts.map(post => (
-      <PostExcerpt key={post.id} post={post} />
+    content = orderedPostIds.map(postId => (
+      <PostExcerpt key={postId} postId={postId} />
     ))
   } else if (postStatus === 'failed') {
     content = <div>{error}</div>
