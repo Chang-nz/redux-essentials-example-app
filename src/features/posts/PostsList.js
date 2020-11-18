@@ -33,11 +33,11 @@ let PostExcerpt = ({ postId }) => {
     </article>
   )
 }
-PostExcerpt = React.memo(PostExcerpt)
+PostExcerpt = React.memo(PostExcerpt)       //
 
 export const PostsList = () => {
   const dispatch = useDispatch()
-  const orderedPostIds = useSelector(selectPostIds)
+  const orderedPostIds = useSelector(selectPostIds)     // read just the sorted array of post IDs
   //2//const posts = useSelector(selectAllPosts)
   //1//const posts = useSelector(state => state.posts)   
    
